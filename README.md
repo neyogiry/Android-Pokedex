@@ -18,7 +18,7 @@ These sample Pokedex apps use [PokeAPI](https://pokeapi.co/).<br>
 This is a full RESTful API linked to an extensive database detailing everything about the Pokémon main game series.
 
 ## Find this repository useful? ♥️
-Support it by joining __[neyogiry](https://github.com/neyogiry/iOS-Pokedex/stargazers)__ for this repository. 🌟 <br>
+Support it by joining __[neyogiry](https://github.com/neyogiry/Android-Pokedex/stargazers)__ for this repository. 🌟 <br>
 Also, __[follow me](https://github.com/neyogiry)__ on GitHub for more content! 👨‍💻
 
 # License
