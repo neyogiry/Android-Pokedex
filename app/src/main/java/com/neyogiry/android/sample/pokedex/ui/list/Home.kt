@@ -141,7 +141,11 @@ fun PokemonItemContent(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(url = ImageHelper.pokemonImageUrl(pokemon.url), averageColor = { backgroundColor = it; onUpdatePokemonColor(it) })
+        Image(
+            url = ImageHelper.pokemonImageUrl(pokemon.url),
+            modifier = Modifier.weight(1f),
+            averageColor = { backgroundColor = it; onUpdatePokemonColor(it) }
+        )
         Text(
             text = pokemon.name,
             fontSize = 16.sp,
@@ -167,7 +171,10 @@ fun PokemonItemContent(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(url = ImageHelper.pokemonImageUrl(pokemon.url))
+        Image(
+            url = ImageHelper.pokemonImageUrl(pokemon.url),
+            modifier = Modifier.weight(1f),
+        )
         Text(
             text = pokemon.name,
             fontSize = 16.sp,
