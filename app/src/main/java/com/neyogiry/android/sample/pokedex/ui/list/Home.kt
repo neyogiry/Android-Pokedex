@@ -113,7 +113,7 @@ fun PokemonItem(
     onUpdatePokemonColor: (Color) -> Unit,
     onClick: () -> Unit
 ) {
-    val shape = RoundedCornerShape(10.dp)
+    val shape = RoundedCornerShape(40.dp)
     pokemon.averageColor?.let {
         PokemonItemContent(pokemon = pokemon, shape = shape, onClick = onClick)
     } ?: run {
