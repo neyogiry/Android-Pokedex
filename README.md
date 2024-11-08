@@ -6,6 +6,9 @@
 
 Welcome to the Pokedex App! This Android application is your ultimate companion for exploring the fascinating world of Pokémon. Built using Compose and following the MVVM design pattern, this app allows users to browse and search for Pokémon, view detailed stats, and explore various types and abilities.
 
+> [!TIP]
+> If you want to see the application for iOS, check out the [iOS-Pokedex](https://github.com/neyogiry/iOS-Pokedex) repository.
+
 <p align="center">
 <img src="/readme/pokemon_list.png" width="320"/>
 </p>
