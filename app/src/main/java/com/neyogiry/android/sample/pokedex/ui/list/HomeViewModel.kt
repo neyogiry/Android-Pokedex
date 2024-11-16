@@ -3,16 +3,17 @@ package com.neyogiry.android.sample.pokedex.ui.list
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.neyogiry.android.sample.pokedex.data.repository.PokedexRepositoryImpl
 import com.neyogiry.android.sample.pokedex.data.RemoteDataSource
 import com.neyogiry.android.sample.pokedex.data.Result
-import com.neyogiry.android.sample.pokedex.domain.PokedexRepository
+import com.neyogiry.android.sample.pokedex.domain.repository.PokedexRepository
 import com.neyogiry.android.sample.pokedex.domain.Pokemon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val repository: PokedexRepository = PokedexRepository(RemoteDataSource()),
+    private val repository: PokedexRepository = PokedexRepositoryImpl(RemoteDataSource()),
 ) : ViewModel() {
 
     // Holds our view state which the UI collects via [state]
@@ -28,7 +29,7 @@ class HomeViewModel(
     private fun fetchPokedex() {
         _state.update { it.copy(loading = true) }
         viewModelScope.launch {
-            repository.pokedex
+            repository.getPokemonList()
                 .flowOn(Dispatchers.IO)
                 .catch {
                     _state.update { it.copy(showError = true, loading = false) }
