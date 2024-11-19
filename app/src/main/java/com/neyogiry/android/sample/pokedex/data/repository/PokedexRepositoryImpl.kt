@@ -11,10 +11,10 @@ class PokedexRepositoryImpl(
     private val dataSource: DataSource
 ) : PokedexRepository {
     override suspend fun getPokemonList(): Flow<Result<List<Pokemon>>> {
-        return dataSource.pokedex
+        return dataSource.getPokemonList()
     }
 
     override suspend fun getPokemonDetail(url: String): Flow<Result<PokemonDetail>> {
-        return dataSource.fetchPokemonDetailByUrl(url)
+        return dataSource.getPokemonDetailByUrl(url)
     }
 }

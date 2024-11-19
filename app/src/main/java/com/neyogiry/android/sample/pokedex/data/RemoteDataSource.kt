@@ -10,10 +10,10 @@ class RemoteDataSource(
     private val apiService: ApiService = ApiClient.getApiService()
 ) : DataSource {
 
-    override val pokedex: Flow<Result<List<Pokemon>>>
-        get() = flow {
+    override fun getPokemonList(): Flow<Result<List<Pokemon>>> {
+        return flow {
             val response = apiService.pokemonList()
-            if(response.isSuccessful) {
+            if (response.isSuccessful) {
                 val pokemonListResponse = response.body()?.results
                 val list = ArrayList<Pokemon>()
                 pokemonListResponse?.forEach { item ->
@@ -27,8 +27,9 @@ class RemoteDataSource(
             }
 
         }
+    }
 
-    override fun fetchPokemonDetailByUrl(url: String): Flow<Result<PokemonDetail>> {
+    override fun getPokemonDetailByUrl(url: String): Flow<Result<PokemonDetail>> {
         return flow {
             val response = apiService.pokemonDetailByUrl(url)
             if (response.isSuccessful) {
