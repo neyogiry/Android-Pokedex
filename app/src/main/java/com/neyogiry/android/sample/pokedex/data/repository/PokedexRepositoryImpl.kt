@@ -1,7 +1,7 @@
 package com.neyogiry.android.sample.pokedex.data.repository
 
-import com.neyogiry.android.sample.pokedex.data.Result
-import com.neyogiry.android.sample.pokedex.domain.DataSource
+import com.neyogiry.android.sample.pokedex.domain.Result
+import com.neyogiry.android.sample.pokedex.domain.datasource.DataSource
 import com.neyogiry.android.sample.pokedex.domain.repository.PokedexRepository
 import com.neyogiry.android.sample.pokedex.domain.Pokemon
 import com.neyogiry.android.sample.pokedex.domain.PokemonDetail

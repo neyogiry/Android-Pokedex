@@ -4,8 +4,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.neyogiry.android.sample.pokedex.data.repository.PokedexRepositoryImpl
-import com.neyogiry.android.sample.pokedex.data.RemoteDataSource
-import com.neyogiry.android.sample.pokedex.data.Result
+import com.neyogiry.android.sample.pokedex.data.datasource.RemoteDataSource
+import com.neyogiry.android.sample.pokedex.domain.Result
 import com.neyogiry.android.sample.pokedex.domain.repository.PokedexRepository
 import com.neyogiry.android.sample.pokedex.domain.Pokemon
 import kotlinx.coroutines.Dispatchers

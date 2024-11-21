@@ -1,6 +1,6 @@
 package com.neyogiry.android.sample.pokedex.domain.repository
 
-import com.neyogiry.android.sample.pokedex.data.Result
+import com.neyogiry.android.sample.pokedex.domain.Result
 import com.neyogiry.android.sample.pokedex.domain.Pokemon
 import com.neyogiry.android.sample.pokedex.domain.PokemonDetail
 import kotlinx.coroutines.flow.Flow

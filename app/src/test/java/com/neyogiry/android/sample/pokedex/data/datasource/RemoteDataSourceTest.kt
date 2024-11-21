@@ -1,6 +1,10 @@
-package com.neyogiry.android.sample.pokedex.data
+package com.neyogiry.android.sample.pokedex.data.datasource
 
-import com.neyogiry.android.sample.pokedex.domain.DataSource
+import com.neyogiry.android.sample.pokedex.data.ApiService
+import com.neyogiry.android.sample.pokedex.data.PokedexResponse
+import com.neyogiry.android.sample.pokedex.data.PokemonResponse
+import com.neyogiry.android.sample.pokedex.domain.datasource.DataSource
+import com.neyogiry.android.sample.pokedex.domain.Result
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import okhttp3.ResponseBody.Companion.toResponseBody
