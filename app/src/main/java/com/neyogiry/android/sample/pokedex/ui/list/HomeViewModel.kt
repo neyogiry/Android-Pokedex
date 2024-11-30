@@ -3,17 +3,18 @@ package com.neyogiry.android.sample.pokedex.ui.list
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.neyogiry.android.sample.pokedex.data.GetPokemonListUseCaseImpl
 import com.neyogiry.android.sample.pokedex.data.repository.PokedexRepositoryImpl
 import com.neyogiry.android.sample.pokedex.data.datasource.RemoteDataSource
+import com.neyogiry.android.sample.pokedex.domain.GetPokemonListUseCase
 import com.neyogiry.android.sample.pokedex.domain.Result
-import com.neyogiry.android.sample.pokedex.domain.repository.PokedexRepository
 import com.neyogiry.android.sample.pokedex.domain.Pokemon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val repository: PokedexRepository = PokedexRepositoryImpl(RemoteDataSource()),
+    private val getPokemonListUseCase: GetPokemonListUseCase = GetPokemonListUseCaseImpl(PokedexRepositoryImpl(RemoteDataSource())),
 ) : ViewModel() {
 
     // Holds our view state which the UI collects via [state]
@@ -23,13 +24,13 @@ class HomeViewModel(
         get() = _state
 
     init {
-        fetchPokedex()
+        getPokedex()
     }
 
-    private fun fetchPokedex() {
+    private fun getPokedex() {
         _state.update { it.copy(loading = true) }
         viewModelScope.launch {
-            repository.getPokemonList()
+            getPokemonListUseCase()
                 .flowOn(Dispatchers.IO)
                 .catch {
                     _state.update { it.copy(showError = true, loading = false) }
@@ -45,7 +46,7 @@ class HomeViewModel(
     }
 
     fun retry() {
-        fetchPokedex()
+        getPokedex()
     }
 
     fun savePokemonColor(position: Int, color: Color) {

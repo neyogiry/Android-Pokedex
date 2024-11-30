@@ -2,6 +2,7 @@ package com.neyogiry.android.sample.pokedex.data
 
 import com.neyogiry.android.sample.pokedex.domain.GetPokemonListUseCase
 import com.neyogiry.android.sample.pokedex.domain.Pokemon
+import com.neyogiry.android.sample.pokedex.domain.Result
 import com.neyogiry.android.sample.pokedex.domain.repository.PokedexRepository
 import kotlinx.coroutines.flow.Flow
 
