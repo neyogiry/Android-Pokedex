@@ -1,7 +1,7 @@
 package com.neyogiry.android.sample.pokedex.data.datasource
 
-import com.neyogiry.android.sample.pokedex.data.ApiClient
-import com.neyogiry.android.sample.pokedex.data.ApiService
+import com.neyogiry.android.sample.pokedex.data.api.ApiClient
+import com.neyogiry.android.sample.pokedex.data.api.ApiService
 import com.neyogiry.android.sample.pokedex.domain.datasource.DataSource
 import com.neyogiry.android.sample.pokedex.domain.Failure
 import com.neyogiry.android.sample.pokedex.domain.Pokemon

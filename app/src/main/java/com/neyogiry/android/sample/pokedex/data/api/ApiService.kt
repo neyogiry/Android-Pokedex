@@ -1,5 +1,7 @@
-package com.neyogiry.android.sample.pokedex.data
+package com.neyogiry.android.sample.pokedex.data.api
 
+import com.neyogiry.android.sample.pokedex.data.PokedexResponse
+import com.neyogiry.android.sample.pokedex.data.PokemonDetailResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

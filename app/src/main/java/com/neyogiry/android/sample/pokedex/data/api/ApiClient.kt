@@ -1,4 +1,4 @@
-package com.neyogiry.android.sample.pokedex.data
+package com.neyogiry.android.sample.pokedex.data.api
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -7,8 +7,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object ApiClient {
-
-    private const val TAG = "ApiClient"
 
     private const val PATH = "https://pokeapi.co/api/v2/"
 
