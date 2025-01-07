@@ -57,14 +57,17 @@ private fun PokemonDetailContent(
     url: String,
     onBackPressed: () -> Unit,
 ) {
-    Box {
+    Box(
+        modifier = Modifier
+            .background(color = pokemonColor)
+    ) {
         val headerLayoutId = "header"
         val imageLayoutId = "image"
         val detailsLayoutId = "details"
         val constraints = constraints(headerLayoutId, imageLayoutId, detailsLayoutId)
 
         ConstraintLayout(constraintSet = constraints, modifier = Modifier.fillMaxSize()) {
-            Header(layoutId = headerLayoutId, backgroundColor = pokemonColor, onBackPressed = onBackPressed)
+            Header(layoutId = headerLayoutId, onBackPressed = onBackPressed)
             Details(pokemon = pokemon, layoutId = detailsLayoutId)
             PokemonImage(imageUrl = ImageHelper.pokemonImageUrl(url), layoutId = imageLayoutId)
         }
@@ -73,7 +76,6 @@ private fun PokemonDetailContent(
 
 @Composable
 fun Header(
-    backgroundColor: Color,
     layoutId: String,
     onBackPressed: () -> Unit,
 ) {
@@ -81,7 +83,6 @@ fun Header(
         modifier = Modifier
             .height(270.dp)
             .fillMaxWidth()
-            .background(color = backgroundColor)
             .layoutId(layoutId)
     ) {
         Icon(
