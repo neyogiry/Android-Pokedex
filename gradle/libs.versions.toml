@@ -20,7 +20,7 @@ mockito = "5.4.0"
 navigationCompose = "2.4.1"
 okhttp3 = "4.9.3"
 palette = "1.0.0"
-retrofit = "2.9.0"
+retrofit = "2.11.0"
 uiTooling = "1.7.4"
 
 [libraries]
