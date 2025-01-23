@@ -3,10 +3,10 @@ package com.neyogiry.android.sample.pokedex.ui.list
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.neyogiry.android.sample.pokedex.data.GetPokemonListUseCaseImpl
+import com.neyogiry.android.sample.pokedex.data.usecase.GetPokemonListUseCaseImpl
 import com.neyogiry.android.sample.pokedex.data.repository.PokedexRepositoryImpl
 import com.neyogiry.android.sample.pokedex.data.datasource.RemoteDataSource
-import com.neyogiry.android.sample.pokedex.domain.GetPokemonListUseCase
+import com.neyogiry.android.sample.pokedex.domain.usecase.GetPokemonListUseCase
 import com.neyogiry.android.sample.pokedex.domain.Result
 import com.neyogiry.android.sample.pokedex.domain.Pokemon
 import kotlinx.coroutines.Dispatchers

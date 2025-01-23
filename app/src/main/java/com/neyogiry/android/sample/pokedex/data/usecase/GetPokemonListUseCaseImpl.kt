@@ -1,6 +1,6 @@
-package com.neyogiry.android.sample.pokedex.data
+package com.neyogiry.android.sample.pokedex.data.usecase
 
-import com.neyogiry.android.sample.pokedex.domain.GetPokemonListUseCase
+import com.neyogiry.android.sample.pokedex.domain.usecase.GetPokemonListUseCase
 import com.neyogiry.android.sample.pokedex.domain.Pokemon
 import com.neyogiry.android.sample.pokedex.domain.Result
 import com.neyogiry.android.sample.pokedex.domain.repository.PokedexRepository
