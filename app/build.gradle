@@ -68,6 +68,7 @@ dependencies {
     implementation libs.google.material
     implementation libs.google.gson
     implementation libs.hilt.android
+    implementation(libs.hilt.navigation.compose)
     implementation libs.retrofit
     implementation libs.retrofit.converter
     implementation libs.okhttp3
