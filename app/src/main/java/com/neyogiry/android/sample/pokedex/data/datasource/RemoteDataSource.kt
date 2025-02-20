@@ -1,6 +1,5 @@
 package com.neyogiry.android.sample.pokedex.data.datasource
 
-import com.neyogiry.android.sample.pokedex.data.api.ApiClient
 import com.neyogiry.android.sample.pokedex.data.api.ApiService
 import com.neyogiry.android.sample.pokedex.domain.datasource.DataSource
 import com.neyogiry.android.sample.pokedex.domain.Failure
@@ -9,9 +8,10 @@ import com.neyogiry.android.sample.pokedex.domain.PokemonDetail
 import com.neyogiry.android.sample.pokedex.domain.Result
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class RemoteDataSource(
-    private val apiService: ApiService = ApiClient.getApiService()
+class RemoteDataSource @Inject constructor(
+    private val apiService: ApiService
 ) : DataSource {
 
     override fun getPokemonList(): Flow<Result<List<Pokemon>>> {

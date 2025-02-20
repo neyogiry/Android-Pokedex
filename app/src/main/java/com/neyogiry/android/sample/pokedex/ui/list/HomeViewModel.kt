@@ -3,21 +3,20 @@ package com.neyogiry.android.sample.pokedex.ui.list
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.neyogiry.android.sample.pokedex.data.usecase.GetPokemonListUseCaseImpl
-import com.neyogiry.android.sample.pokedex.data.repository.PokedexRepositoryImpl
-import com.neyogiry.android.sample.pokedex.data.datasource.RemoteDataSource
 import com.neyogiry.android.sample.pokedex.domain.usecase.GetPokemonListUseCase
 import com.neyogiry.android.sample.pokedex.domain.Result
 import com.neyogiry.android.sample.pokedex.domain.Pokemon
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeViewModel(
-    private val getPokemonListUseCase: GetPokemonListUseCase = GetPokemonListUseCaseImpl(PokedexRepositoryImpl(RemoteDataSource())),
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    private val getPokemonListUseCase: GetPokemonListUseCase
 ) : ViewModel() {
 
-    // Holds our view state which the UI collects via [state]
     private val _state = MutableStateFlow(HomeViewState())
 
     val state: StateFlow<HomeViewState>

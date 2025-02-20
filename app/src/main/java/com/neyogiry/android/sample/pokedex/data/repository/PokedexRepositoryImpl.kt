@@ -6,8 +6,9 @@ import com.neyogiry.android.sample.pokedex.domain.repository.PokedexRepository
 import com.neyogiry.android.sample.pokedex.domain.Pokemon
 import com.neyogiry.android.sample.pokedex.domain.PokemonDetail
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class PokedexRepositoryImpl(
+class PokedexRepositoryImpl @Inject constructor(
     private val dataSource: DataSource
 ) : PokedexRepository {
     override suspend fun getPokemonList(): Flow<Result<List<Pokemon>>> {

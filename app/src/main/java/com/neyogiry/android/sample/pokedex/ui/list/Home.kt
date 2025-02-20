@@ -20,7 +20,6 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.neyogiry.android.sample.pokedex.domain.Pokemon
 import com.neyogiry.android.sample.pokedex.ui.ErrorScreen
@@ -32,7 +31,7 @@ import com.neyogiry.android.sample.pokedex.util.ImageHelper
 @ExperimentalFoundationApi
 @Composable
 fun Home(
-    viewModel: HomeViewModel = viewModel(),
+    viewModel: HomeViewModel,
     onItemClick: (Pokemon) -> Unit,
 ) {
     val viewState by viewModel.state.collectAsState()

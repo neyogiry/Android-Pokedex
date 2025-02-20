@@ -29,7 +29,7 @@ import com.neyogiry.android.sample.pokedex.util.ImageHelper
 @Composable
 fun PokemonDetails(
     pokemon: Pokemon,
-    viewModel: PokemonDetailViewModel = viewModel(factory = PokemonDetailViewModel.provideFactory(pokemon.url)),
+    viewModel: PokemonDetailViewModel,
     onBackPressed: () -> Unit,
 ) {
     val viewState by viewModel.state.collectAsState()
@@ -38,11 +38,15 @@ fun PokemonDetails(
     if (viewState.loading) {
         LoadingScreen()
     } else if (viewState.showError) {
-        ErrorScreen(onRetry = { viewModel.retry() })
+        ErrorScreen(onRetry = { viewModel.retry(pokemon.url) })
     } else {
         viewState.pokemon?.let { pokemonDetail ->
             PokemonDetailContent(pokemon = pokemonDetail, pokemonColor = pokemon.averageColor ?: Pokedex, url = pokemon.url, onBackPressed = onBackPressed)
         }
+    }
+
+    LaunchedEffect(Unit) {
+        viewModel.fetchPokemonDetails(pokemon.url)
     }
 }
 

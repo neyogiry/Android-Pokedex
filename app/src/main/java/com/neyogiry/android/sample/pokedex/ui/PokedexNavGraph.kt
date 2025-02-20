@@ -4,6 +4,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -12,8 +13,10 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.google.gson.Gson
 import com.neyogiry.android.sample.pokedex.domain.Pokemon
+import com.neyogiry.android.sample.pokedex.ui.detail.PokemonDetailViewModel
 import com.neyogiry.android.sample.pokedex.ui.detail.PokemonDetails
 import com.neyogiry.android.sample.pokedex.ui.list.Home
+import com.neyogiry.android.sample.pokedex.ui.list.HomeViewModel
 
 @ExperimentalFoundationApi
 @Composable
@@ -26,7 +29,9 @@ fun PokedexNavGraph(
         startDestination = PokedexDestinations.HOME_ROUTE,
     ) {
         composable(PokedexDestinations.HOME_ROUTE) {
-            Home() { pokemon ->
+            Home(
+                viewModel = hiltViewModel<HomeViewModel>()
+            ) { pokemon ->
                 val json = Uri.encode(Gson().toJson(pokemon))
                 navController.navigate(PokedexDestinations.DETAILS_ROUTE + json)
             }
@@ -36,9 +41,11 @@ fun PokedexNavGraph(
             arguments = listOf(navArgument("pokemon") { type = PokemonType() })
         ) { backStackEntry ->
             backStackEntry.arguments?.getParcelable<Pokemon>("pokemon")?.let { pokemon ->
-                PokemonDetails(pokemon = pokemon) {
-                    navController.popBackStack()
-                }
+                PokemonDetails(
+                    pokemon = pokemon,
+                    viewModel = hiltViewModel<PokemonDetailViewModel>(),
+                    onBackPressed = { navController.popBackStack() }
+                )
             }
         }
     }

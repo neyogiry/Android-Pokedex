@@ -1,33 +1,27 @@
 package com.neyogiry.android.sample.pokedex.ui.detail
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.neyogiry.android.sample.pokedex.data.repository.PokedexRepositoryImpl
-import com.neyogiry.android.sample.pokedex.data.datasource.RemoteDataSource
 import com.neyogiry.android.sample.pokedex.domain.Result
 import com.neyogiry.android.sample.pokedex.domain.repository.PokedexRepository
 import com.neyogiry.android.sample.pokedex.domain.PokemonDetail
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class PokemonDetailViewModel(
-    private val url: String,
-    private val repository: PokedexRepository = PokedexRepositoryImpl(RemoteDataSource()),
+@HiltViewModel
+class PokemonDetailViewModel @Inject constructor(
+    private val repository: PokedexRepository,
 ) : ViewModel() {
 
-    // Holds our view state which the UI collects via [state]
     private val _state = MutableStateFlow(PokemonDetailViewState())
 
     val state: StateFlow<PokemonDetailViewState>
         get() = _state
 
-    init {
-        fetchPokemonDetails()
-    }
-
-    private fun fetchPokemonDetails() {
+    fun fetchPokemonDetails(url: String) {
         _state.update { it.copy(loading = true) }
         viewModelScope.launch {
             repository.getPokemonDetail(url)
@@ -44,19 +38,8 @@ class PokemonDetailViewModel(
         }
     }
 
-    fun retry() {
-        fetchPokemonDetails()
-    }
-
-    companion object {
-        fun provideFactory(
-            url: String
-        ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
-            @Suppress("UNCHECKED_CAST")
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return PokemonDetailViewModel(url) as T
-            }
-        }
+    fun retry(url: String) {
+        fetchPokemonDetails(url)
     }
 
 }
