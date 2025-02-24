@@ -15,10 +15,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.neyogiry.android.sample.pokedex.R
-import com.neyogiry.android.sample.pokedex.domain.Pokemon
 import com.neyogiry.android.sample.pokedex.domain.PokemonDetail
 import com.neyogiry.android.sample.pokedex.ui.ErrorScreen
 import com.neyogiry.android.sample.pokedex.ui.LoadingScreen
@@ -28,25 +26,28 @@ import com.neyogiry.android.sample.pokedex.util.ImageHelper
 
 @Composable
 fun PokemonDetails(
-    pokemon: Pokemon,
+    url: String,
+    averageColor: String?,
     viewModel: PokemonDetailViewModel,
     onBackPressed: () -> Unit,
 ) {
+    val color = averageColor?.let { Color(android.graphics.Color.parseColor(it)) } ?: Pokedex
     val viewState by viewModel.state.collectAsState()
     val systemUiController = rememberSystemUiController()
-    systemUiController.setStatusBarColor(pokemon.averageColor ?: Pokedex)
+    systemUiController.setStatusBarColor(color)
+
     if (viewState.loading) {
         LoadingScreen()
     } else if (viewState.showError) {
-        ErrorScreen(onRetry = { viewModel.retry(pokemon.url) })
+        ErrorScreen(onRetry = { viewModel.retry(url) })
     } else {
         viewState.pokemon?.let { pokemonDetail ->
-            PokemonDetailContent(pokemon = pokemonDetail, pokemonColor = pokemon.averageColor ?: Pokedex, url = pokemon.url, onBackPressed = onBackPressed)
+            PokemonDetailContent(pokemon = pokemonDetail, pokemonColor = color, url = url, onBackPressed = onBackPressed)
         }
     }
 
     LaunchedEffect(Unit) {
-        viewModel.fetchPokemonDetails(pokemon.url)
+        viewModel.fetchPokemonDetails(url)
     }
 }
 
