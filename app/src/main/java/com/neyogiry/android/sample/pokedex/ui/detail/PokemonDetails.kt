@@ -6,6 +6,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -73,7 +74,7 @@ private fun PokemonDetailContent(
 fun Header(
     onBackPressed: () -> Unit,
 ) {
-    Box(
+    Row(
         modifier = Modifier
             .height(270.dp)
             .fillMaxWidth()
@@ -84,6 +85,8 @@ fun Header(
             modifier = Modifier.clickable(interactionSource = remember { MutableInteractionSource() }, indication = null) { onBackPressed() },
             tint = Color.White
         )
+        Spacer(modifier = Modifier.weight(1f))
+        Text(text = String.format("#%03d", 1), modifier = Modifier.padding(12.dp), style = MaterialTheme.typography.bodyLarge)
 
     }
 }
@@ -198,7 +201,7 @@ fun Details(
 @Composable
 private fun PokemonDetailsPreview() {
     PokemonDetailContent(
-        pokemon = PokemonDetail(name = "Bulbasaur", height = 7, weight = 69),
+        pokemon = PokemonDetail(id = 1, name = "Bulbasaur", height = 7, weight = 69),
         pokemonColor = Color(0xFF069494),
         url = "https://pokeapi.co/api/v2/pokemon/1/",
         onBackPressed = {}

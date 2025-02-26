@@ -44,7 +44,14 @@ class RemoteDataSource @Inject constructor(
                 val pokemonResponse = response.body()
                 pokemonResponse?.let { pokemon ->
                     emit(
-                        Result.Success(PokemonDetail(name = pokemon.name ?: "", height = pokemon.height ?: 0, weight = pokemon.weight ?: 0))
+                        Result.Success(
+                            PokemonDetail(
+                                id = pokemon.id,
+                                name = pokemon.name ?: "",
+                                height = pokemon.height ?: 0,
+                                weight = pokemon.weight ?: 0
+                            )
+                        )
                     )
                 } ?: emit(Result.Error(Failure.DataError))
             } else {
