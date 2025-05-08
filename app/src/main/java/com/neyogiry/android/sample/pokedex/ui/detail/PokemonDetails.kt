@@ -62,6 +62,8 @@ private fun PokemonDetailContent(
     Box(
         modifier = Modifier
             .background(color = pokemonColor)
+            .statusBarsPadding()
+            .navigationBarsPadding()
     ) {
         Column(modifier = Modifier.fillMaxSize(),) {
             Header(onBackPressed = onBackPressed)
