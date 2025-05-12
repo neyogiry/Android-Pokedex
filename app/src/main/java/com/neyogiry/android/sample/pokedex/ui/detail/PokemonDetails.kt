@@ -66,7 +66,7 @@ private fun PokemonDetailContent(
             .navigationBarsPadding()
     ) {
         Column(modifier = Modifier.fillMaxSize(),) {
-            Header(onBackPressed = onBackPressed)
+            Header(id = pokemon.id, onBackPressed = onBackPressed)
             Details(pokemon = pokemon, url = ImageHelper.pokemonImageUrl(url))
         }
     }
@@ -74,6 +74,7 @@ private fun PokemonDetailContent(
 
 @Composable
 fun Header(
+    id: Int,
     onBackPressed: () -> Unit,
 ) {
     Row(
@@ -88,7 +89,7 @@ fun Header(
             tint = Color.White
         )
         Spacer(modifier = Modifier.weight(1f))
-        Text(text = String.format("#%03d", 1), modifier = Modifier.padding(12.dp), style = MaterialTheme.typography.bodyLarge)
+        Text(text = String.format("#%03d", id), modifier = Modifier.padding(12.dp), style = MaterialTheme.typography.bodyLarge)
 
     }
 }
