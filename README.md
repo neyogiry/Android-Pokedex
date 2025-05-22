@@ -15,7 +15,7 @@ Welcome to the Pokedex App! This Android application is your ultimate companion 
 
 ## Requirements
 Android Studio: 2024.2.1 <br>
-Target SDK: 34 <br>
+Target SDK: 35 <br>
 Kotlin: 1.9.20
 
 ## API
