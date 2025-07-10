@@ -27,7 +27,7 @@ navigationCompose = "2.8.9"
 okhttp3 = "4.9.3"
 palette = "1.0.0"
 retrofit = "2.11.0"
-uiTooling = "1.8.0"
+uiTooling = "1.8.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
